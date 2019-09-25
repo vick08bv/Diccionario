@@ -66,7 +66,7 @@ public class Interfaz extends javax.swing.JFrame {
         buscar = new javax.swing.JButton();
         eliminarClave = new javax.swing.JButton();
         clave = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        valor = new javax.swing.JTextField();
         editorValores = new javax.swing.JTextField();
         anadir = new javax.swing.JButton();
         eliminarValor = new javax.swing.JButton();
@@ -81,10 +81,10 @@ public class Interfaz extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(232, 232, 239));
 
+        texto.setEditable(false);
         texto.setBackground(new java.awt.Color(230, 229, 238));
         texto.setColumns(5);
         texto.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        texto.setForeground(new java.awt.Color(255, 255, 255));
         texto.setRows(5);
         texto.setBorder(null);
         panel.setViewportView(texto);
@@ -118,13 +118,13 @@ public class Interfaz extends javax.swing.JFrame {
         clave.setBorder(null);
         clave.setPreferredSize(new java.awt.Dimension(50, 25));
 
-        jTextField2.setEditable(false);
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 0, 204));
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("Valor");
-        jTextField2.setBorder(null);
-        jTextField2.setPreferredSize(new java.awt.Dimension(50, 25));
+        valor.setEditable(false);
+        valor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        valor.setForeground(new java.awt.Color(0, 0, 204));
+        valor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        valor.setText("Valor");
+        valor.setBorder(null);
+        valor.setPreferredSize(new java.awt.Dimension(50, 25));
 
         editorValores.setBackground(new java.awt.Color(233, 232, 239));
         editorValores.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -197,7 +197,7 @@ public class Interfaz extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(editorValores, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -244,7 +244,7 @@ public class Interfaz extends javax.swing.JFrame {
                             .addComponent(eliminarClave, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(editorValores, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -260,7 +260,7 @@ public class Interfaz extends javax.swing.JFrame {
         
         JFileChooser chooser = new JFileChooser();
         chooser.setDialogTitle("Abrir archivo");
-        chooser.setFileFilter(new FileNameExtensionFilter("csv"));
+        chooser.setFileFilter(new FileNameExtensionFilter("csv", "CSV"));
            
         if(chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
             
@@ -298,7 +298,9 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
         
-        m.buscar(editorClaves.getText());
+        String sinonimos = m.buscar(editorClaves.getText());
+        
+        texto.setText(sinonimos);
         
     }//GEN-LAST:event_buscarActionPerformed
 
@@ -351,10 +353,10 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton eliminarClave;
     private javax.swing.JButton eliminarValor;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JMenuBar menu;
     private javax.swing.JTextField palabraActual;
     private javax.swing.JScrollPane panel;
     private javax.swing.JTextArea texto;
+    private javax.swing.JTextField valor;
     // End of variables declaration//GEN-END:variables
 }
