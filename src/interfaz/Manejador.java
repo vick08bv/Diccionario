@@ -72,11 +72,11 @@ public class Manejador {
         if(this.dict.containsKey(palabra)){
         
             ArrayList<String> sinonimos = this.dict.get(palabra);
-            String cadena = "  ";
+            String cadena = "";
             
             for(String sinonimo: sinonimos){
             
-                cadena += sinonimo + "\n  ";
+                cadena += "\n  " + sinonimo + ",";
                 
             }
             

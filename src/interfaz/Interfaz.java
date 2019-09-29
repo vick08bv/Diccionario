@@ -50,6 +50,10 @@ public class Interfaz extends javax.swing.JFrame {
         editorClaves.setEditable(false);
         editorValores.setEditable(false);
         
+        ayudaDialogo.setTitle("Ayuda");
+        ayudaDialogo.setSize(350, 250);
+        ayudaDialogo.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -61,6 +65,9 @@ public class Interfaz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ayudaDialogo = new javax.swing.JDialog();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textoAyuda = new javax.swing.JTextArea();
         panel = new javax.swing.JScrollPane();
         texto = new javax.swing.JTextArea();
         editorClaves = new javax.swing.JTextField();
@@ -76,12 +83,36 @@ public class Interfaz extends javax.swing.JFrame {
         ayuda = new javax.swing.JButton();
         imagen = new javax.swing.JLabel();
         sinonimos = new javax.swing.JTextField();
-        menu = new javax.swing.JMenuBar();
-        archivos = new javax.swing.JMenu();
+        menuBarra = new javax.swing.JMenuBar();
+        menuMenu = new javax.swing.JMenu();
+        archivoMenu = new javax.swing.JMenu();
         abrir = new javax.swing.JMenuItem();
         cerrar = new javax.swing.JMenuItem();
+        guardarMenu = new javax.swing.JMenu();
         guardar = new javax.swing.JMenuItem();
         guardarComo = new javax.swing.JMenuItem();
+
+        textoAyuda.setEditable(false);
+        textoAyuda.setBackground(new java.awt.Color(225, 225, 245));
+        textoAyuda.setColumns(20);
+        textoAyuda.setFont(new java.awt.Font("Quicksand Light", 3, 13)); // NOI18N
+        textoAyuda.setForeground(new java.awt.Color(47, 2, 2));
+        textoAyuda.setRows(5);
+        textoAyuda.setText("  Guía:\n\n +Menú:\n\n  -Archivos: Abre o cierra archivos en\n\n   formato .csv, para editarlos.\n\n  -Guardar: Guarda los cambios hechos,\n\n   en el mismo archivo o en otro.\n\n +Componentes de la interfaz:\n\n  -Palabra Actual: Indica la palabra elegida,\n\n   lista para añadirle sinónimos.\n\n  -Caja de Texto (Sinónimos): Muestra los\n\n   sinónimos asociados a la palabra actual,\n\n   además de avisos útiles.\n\n +Editores de texto:\n\n  -Clave: Introduce palabras clave en el\n\n   diccionario.\n\n  -Valor: Introduce una o más palabras\n\n   sinónimas, separadas por comas.\n\n +Botones:\n\n  -Buscar: Busca la palabra introducida\n\n   en el diccionario y muestra sus sinónimos.\n\n  -Eliminar (clave): Elimina la palabra \n\n   actual mostrada del diccionario.\n\n  -Añadir: Añade los sinónimos indicados\n\n   a la palabra actual mostrada, incluso si\n\n   esta palabra no está en el diccionario\n\n   aún.\n\n  -Eliminar (sinónimos): Elimina los\n\n   sinónimos indicados de la palabra\n\n   actual mostrada.");
+        textoAyuda.setBorder(null);
+        textoAyuda.setPreferredSize(new java.awt.Dimension(310, 1000));
+        jScrollPane1.setViewportView(textoAyuda);
+
+        javax.swing.GroupLayout ayudaDialogoLayout = new javax.swing.GroupLayout(ayudaDialogo.getContentPane());
+        ayudaDialogo.getContentPane().setLayout(ayudaDialogoLayout);
+        ayudaDialogoLayout.setHorizontalGroup(
+            ayudaDialogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+        );
+        ayudaDialogoLayout.setVerticalGroup(
+            ayudaDialogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(225, 225, 245));
@@ -107,6 +138,8 @@ public class Interfaz extends javax.swing.JFrame {
         buscar.setForeground(new java.awt.Color(51, 51, 51));
         buscar.setText("Buscar");
         buscar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buscar.setContentAreaFilled(false);
+        buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarActionPerformed(evt);
@@ -117,6 +150,8 @@ public class Interfaz extends javax.swing.JFrame {
         eliminarClave.setForeground(new java.awt.Color(255, 0, 0));
         eliminarClave.setText("Borrar");
         eliminarClave.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        eliminarClave.setContentAreaFilled(false);
+        eliminarClave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         eliminarClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminarClaveActionPerformed(evt);
@@ -153,6 +188,8 @@ public class Interfaz extends javax.swing.JFrame {
         anadir.setForeground(new java.awt.Color(51, 51, 51));
         anadir.setText("Añadir");
         anadir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        anadir.setContentAreaFilled(false);
+        anadir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         anadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 anadirActionPerformed(evt);
@@ -163,6 +200,8 @@ public class Interfaz extends javax.swing.JFrame {
         eliminarValor.setForeground(new java.awt.Color(255, 0, 0));
         eliminarValor.setText("Borrar");
         eliminarValor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        eliminarValor.setContentAreaFilled(false);
+        eliminarValor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         eliminarValor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminarValorActionPerformed(evt);
@@ -179,7 +218,7 @@ public class Interfaz extends javax.swing.JFrame {
         palabraActual.setEditable(false);
         palabraActual.setBackground(new java.awt.Color(225, 225, 245));
         palabraActual.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        palabraActual.setForeground(new java.awt.Color(30, 1, 1));
+        palabraActual.setForeground(new java.awt.Color(47, 2, 2));
         palabraActual.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         palabraActual.setText("Palabra actual:");
         palabraActual.setBorder(null);
@@ -191,10 +230,16 @@ public class Interfaz extends javax.swing.JFrame {
         ayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/pregunta.png"))); // NOI18N
         ayuda.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ayuda.setContentAreaFilled(false);
+        ayuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ayudaActionPerformed(evt);
+            }
+        });
 
         imagen.setBackground(new java.awt.Color(225, 225, 245));
         imagen.setFont(new java.awt.Font("Lucida Sans Unicode", 1, 12)); // NOI18N
         imagen.setForeground(new java.awt.Color(47, 2, 2));
+        imagen.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         imagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/juegoPalabras.png"))); // NOI18N
         imagen.setToolTipText("");
         imagen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -209,7 +254,9 @@ public class Interfaz extends javax.swing.JFrame {
         sinonimos.setBorder(null);
         sinonimos.setOpaque(false);
 
-        archivos.setText("  Archivos");
+        menuMenu.setText("Menú");
+
+        archivoMenu.setText("Archivo");
 
         abrir.setText("Abrir archivo");
         abrir.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +264,7 @@ public class Interfaz extends javax.swing.JFrame {
                 abrirActionPerformed(evt);
             }
         });
-        archivos.add(abrir);
+        archivoMenu.add(abrir);
 
         cerrar.setText("Cerrar archivo");
         cerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -225,15 +272,19 @@ public class Interfaz extends javax.swing.JFrame {
                 cerrarActionPerformed(evt);
             }
         });
-        archivos.add(cerrar);
+        archivoMenu.add(cerrar);
 
-        guardar.setText("Guardar");
+        menuMenu.add(archivoMenu);
+
+        guardarMenu.setText("Guardar");
+
+        guardar.setText("Guardar archivo");
         guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarActionPerformed(evt);
             }
         });
-        archivos.add(guardar);
+        guardarMenu.add(guardar);
 
         guardarComo.setText("Guardar como...");
         guardarComo.addActionListener(new java.awt.event.ActionListener() {
@@ -241,11 +292,13 @@ public class Interfaz extends javax.swing.JFrame {
                 guardarComoActionPerformed(evt);
             }
         });
-        archivos.add(guardarComo);
+        guardarMenu.add(guardarComo);
 
-        menu.add(archivos);
+        menuMenu.add(guardarMenu);
 
-        setJMenuBar(menu);
+        menuBarra.add(menuMenu);
+
+        setJMenuBar(menuBarra);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -259,27 +312,27 @@ public class Interfaz extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(eliminarClave, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(clave, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editorClaves, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ayuda, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(anadir, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(eliminarValor, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(editorValores, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ayuda, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(editorValores, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(clave, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(editorClaves, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(claveActual, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sinonimos, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panel, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(palabraActual, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
+                    .addComponent(sinonimos, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(claveActual, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(palabraActual, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
                 .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
@@ -488,6 +541,12 @@ public class Interfaz extends javax.swing.JFrame {
                 
     }//GEN-LAST:event_guardarComoActionPerformed
 
+    private void ayudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ayudaActionPerformed
+        
+        ayudaDialogo.setVisible(true);
+        
+    }//GEN-LAST:event_ayudaActionPerformed
+
     /**
      * @param args the command line arguments.
      */
@@ -527,8 +586,9 @@ public class Interfaz extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem abrir;
     private javax.swing.JButton anadir;
-    private javax.swing.JMenu archivos;
+    private javax.swing.JMenu archivoMenu;
     private javax.swing.JButton ayuda;
+    private javax.swing.JDialog ayudaDialogo;
     private javax.swing.JButton buscar;
     private javax.swing.JMenuItem cerrar;
     private javax.swing.JTextField clave;
@@ -539,12 +599,16 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton eliminarValor;
     private javax.swing.JMenuItem guardar;
     private javax.swing.JMenuItem guardarComo;
+    private javax.swing.JMenu guardarMenu;
     private javax.swing.JLabel imagen;
-    private javax.swing.JMenuBar menu;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuBar menuBarra;
+    private javax.swing.JMenu menuMenu;
     private javax.swing.JTextField palabraActual;
     private javax.swing.JScrollPane panel;
     private javax.swing.JTextField sinonimos;
     private javax.swing.JTextArea texto;
+    private javax.swing.JTextArea textoAyuda;
     private javax.swing.JTextField valor;
     // End of variables declaration//GEN-END:variables
 }
