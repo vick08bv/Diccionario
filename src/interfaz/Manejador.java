@@ -70,17 +70,23 @@ public class Manejador {
     public String buscar(String palabra){
         
         if(this.dict.containsKey(palabra)){
+            
+            if(this.dict.get(palabra).isEmpty()){} else {
         
-            ArrayList<String> sinonimos = this.dict.get(palabra);
-            String cadena = "";
+                ArrayList<String> sinonimos = this.dict.get(palabra);
+                String cadena = "";
             
-            for(String sinonimo: sinonimos){
+                cadena += "\n  " + sinonimos.get(0);
             
-                cadena += "\n  " + sinonimo + ",";
+                for(int i = 1; i<sinonimos.size();i++){
+            
+                    cadena += ",\n  " + sinonimos.get(i);
+                
+                }
+            
+                return cadena;
                 
             }
-            
-            return cadena;
             
         }
         
@@ -171,8 +177,15 @@ public class Manejador {
                 
             }
                 
-            this.dict.put(clave, sinonimosRestantes);
+            if(sinonimosRestantes.isEmpty()){
                 
+                this.dict.remove(clave);
+            
+            } else {
+                
+                this.dict.put(clave, sinonimosRestantes);
+                
+            }
         } 
         
     }
