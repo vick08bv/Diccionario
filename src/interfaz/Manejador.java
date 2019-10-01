@@ -35,12 +35,21 @@ public class Manejador {
      */
     public void leer(File archivo) throws FileNotFoundException, IOException{
         
+        //Se crea el diccionario con el cual se
+        //administrarán todos los cambios de la
+        //sesión, hechos por el usuario.
+        
         dict = new HashMap<>();
+        
+        //Lectores de líneas.
         
         FileReader fReader = new FileReader(archivo);
         BufferedReader bReader = new BufferedReader(fReader);
             
         String linea = bReader.readLine();
+        
+        //Lectura de cada palabra clave y sus sinónimos, para
+        //añadirlas al diccionario.
             
         while(linea != null){
             
@@ -120,6 +129,7 @@ public class Manejador {
         //Si la clave ya se encuentra en el diccionario, se añaden
         //más sinónimos. Si no se encuentra, se crea y se le agregan
         //los sinónimos indicados.
+        
         if(this.dict.containsKey(clave)){
             
             ArrayList<String> sinonimosTotales = new ArrayList<>();
@@ -132,9 +142,11 @@ public class Manejador {
             }
             
             //Se agregan los sinónimos que aún no estén en el diccionario.
+            
             for(String sinonimo: Lsinonimos){
                 
-                if(sinonimosTotales.contains(sinonimo)){} else {
+                if(sinonimosTotales.contains(sinonimo) || 
+                   sinonimo.equals("")){} else {
                 
                 sinonimosTotales.add(sinonimo);
                 
@@ -167,6 +179,7 @@ public class Manejador {
             
             //Quita los sinónimos indicados de
             //la lista asociada a la clave.
+            
             for(String sinonimo: this.dict.get(clave)){
                     
                 if(Lsinonimos.contains(sinonimo)){} else {
@@ -176,6 +189,10 @@ public class Manejador {
                 }
                 
             }
+            
+            //Si la lista resultante se queda vacía, la clave 
+            //se elimina del diccionario, de otra forma, se 
+            //actualizan sus sinónimos.
                 
             if(sinonimosRestantes.isEmpty()){
                 
@@ -192,21 +209,24 @@ public class Manejador {
     
     
     /**
-     * Escribe el contenido del diccionario en el archivo con la ruta
-     * especificada.
-     * @param ruta 
+     * Escribe el contenido del diccionario 
+     * en el archivo con la ruta especificada.
+     * @param ruta Lugar donde se guardará el archivo.
      */
     public void guardar(String ruta){
         
         try {
             
-            PrintWriter pw = new PrintWriter(new File(ruta));
-        
+            //Se inicia el escritor de lineas y una cadena
+            //que contendrá toda la información a guardar.
+            
+            PrintWriter pw = new PrintWriter(new File(ruta));        
             StringBuilder sb = new StringBuilder();
                 
-            ArrayList<String> palabras = new ArrayList<>();
-                
+            ArrayList<String> palabras = new ArrayList<>();               
             ArrayList<String> sinonimos = new ArrayList<>();
+            
+            //Primero se ordenan las palabras clave alfabéticamente.
             
             for(String palabra: this.dict.keySet()){
                 
@@ -216,14 +236,16 @@ public class Manejador {
                 
             palabras.sort(String::compareTo);
             
+            //Posteriormente, se añade cada clave y sus sinónimos 
+            //siguiendo el formato ya establecido.
+            
             for(String palabra: palabras){
                 
                 sinonimos = this.dict.get(palabra);
                 
                 if(sinonimos.isEmpty()){} else {
                     
-                    sb.append(palabra + ";");
-                    
+                    sb.append(palabra + ";");                   
                     sb.append(" " + sinonimos.get(0));
                     
                     for(int i = 1; i<sinonimos.size(); i++){
@@ -238,11 +260,14 @@ public class Manejador {
                     
             }
             
-            
+        //Finalmente, se escribe totalmente el archivo.
+        
         pw.write(sb.toString());
         pw.close();
         
         } catch (Exception e) {
+            
+            System.out.println("Error al guardar el archivo.");
         
         }
     

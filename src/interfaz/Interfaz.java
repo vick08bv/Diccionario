@@ -507,6 +507,7 @@ public class Interfaz extends javax.swing.JFrame {
         String palabras = editorValores.getText().toLowerCase();
         
         palabras = palabras.replace(" ", "");
+        
         m.borrarValores(claveActual.getText(), palabras.split(","));
         
         texto.setText(m.buscar(claveActual.getText()));
@@ -515,7 +516,10 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
         
+        //Se reescribe el archivo original abierto.
+        
         m.guardar(f.getAbsolutePath());
+        
         cambios = false;
         
         texto.setText("\n     Diccionario\n      guardado.");
@@ -523,6 +527,9 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_guardarActionPerformed
 
     private void guardarComoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarComoActionPerformed
+        
+        //El usuario selecciona el nombre y ruta del archivo 
+        //donde se guardará el diccionario actualizado. 
         
         JFileChooser chooser = new JFileChooser();
         
@@ -535,6 +542,7 @@ public class Interfaz extends javax.swing.JFrame {
             m.guardar(chooser.getSelectedFile().getAbsolutePath());
             
             cambios = false;
+            
         }   
         
         texto.setText("\n     Diccionario\n      guardado.");
