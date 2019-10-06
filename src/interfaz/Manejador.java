@@ -55,11 +55,11 @@ public class Manejador {
             
             if(linea.isEmpty()){} else {
                 
-            linea = linea.replace(" ", "");
-            String[] entrada = linea.split(";");
-            String[] sinonimos = entrada[1].split(",");
-            this.dict.put(entrada[0], toLista(sinonimos));
-            linea = bReader.readLine();
+                linea = linea.replace(" ", "");
+                String[] entrada = linea.split(";");
+                String[] sinonimos = entrada[1].split(",");
+                this.dict.put(entrada[0], toLista(sinonimos));
+                linea = bReader.readLine();
             
             }
                 
@@ -154,12 +154,20 @@ public class Manejador {
                     
             }
             
-            this.dict.put(clave, sinonimosTotales);
+            if(sinonimosTotales.isEmpty()){} else {
+            
+                this.dict.put(clave, sinonimosTotales);
+            
+            }
         
         } else {
+            
+            if(sinonimos.length == 0){} else {
         
-            this.dict.put(clave, this.toLista(sinonimos));
+                this.dict.put(clave, this.toLista(sinonimos));
     
+            }
+            
         }
         
     }
@@ -283,7 +291,7 @@ public class Manejador {
         
         ArrayList<String> lista = new ArrayList<>();
         
-        for (String palabra: sinonimos) {
+        for(String palabra: sinonimos) {
             lista.add(palabra);
         }
         

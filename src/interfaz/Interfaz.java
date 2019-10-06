@@ -25,13 +25,17 @@ public class Interfaz extends javax.swing.JFrame {
     private HashMap<String, ArrayList<String>> map;
 
     /**
-     * Creates new form Practica3
+     * Inicio de la interfaz.
      */
     public Interfaz() {
         
         initComponents();
         
+        //Avisa al usuario si hay cambios por guardar, 
+        //cuando quiera cerrar el diccionario.
         cambios = false;
+        
+        //Manejador de diccionarios.
         m = new Manejador();
         
         setTitle("Diccionario de sinónimos");
@@ -377,6 +381,8 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void abrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirActionPerformed
         
+        //El lector lee el archivo escogido por el usuario.
+        
         JFileChooser chooser = new JFileChooser();
         chooser.setDialogTitle("Abrir archivo");
         chooser.setFileFilter(new FileNameExtensionFilter("csv", "CSV"));
@@ -417,6 +423,9 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarActionPerformed
         
+        //Si hay cambios sin guardar, el usuario es avisado de esto, 
+        //para que no pierda información por error.
+        
         int opcion = 0;
         
         if(cambios){
@@ -427,6 +436,9 @@ public class Interfaz extends javax.swing.JFrame {
         }
         
         if (opcion == 0){
+            
+            //Se limpia por completo la ventana, y se espera que se abra 
+            //otro archivo. 
         
             f = null;
             m = new Manejador();
@@ -453,10 +465,14 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
         
+        //Busca la palabra ingresada en el diccionario.
+        
         String palabraBuscada = editorClaves.getText();
         
         if(palabraBuscada.equals("")){
         
+            //Evita trabajar con palabras vacías.
+            
             anadir.setEnabled(false);
             eliminarValor.setEnabled(false);
             eliminarClave.setEnabled(false);
@@ -478,6 +494,8 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void eliminarClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarClaveActionPerformed
         
+        //Elimina la palabra que se muestra en la ventana.
+        
         cambios = true;
         
         m.borrarClave(claveActual.getText());
@@ -488,6 +506,9 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarClaveActionPerformed
 
     private void anadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anadirActionPerformed
+        
+        //Añade los sinónimos que desee el usuario, a la palabra 
+        //actual mostrada.
         
         cambios = true;
         
@@ -501,6 +522,10 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_anadirActionPerformed
 
     private void eliminarValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarValorActionPerformed
+        
+        //Elimina los sinónimos indicados por el usuario, de la 
+        //palabra clave actual y borra la palabra en caso de que
+        //se eliminen todos sus sinónimos.
         
         cambios = true;
         
@@ -543,9 +568,9 @@ public class Interfaz extends javax.swing.JFrame {
             
             cambios = false;
             
-        }   
-        
-        texto.setText("\n     Diccionario\n      guardado.");
+            texto.setText("\n     Diccionario\n      guardado.");
+            
+        }
                 
     }//GEN-LAST:event_guardarComoActionPerformed
 
